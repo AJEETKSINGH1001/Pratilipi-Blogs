@@ -1,0 +1,14 @@
+<!-- blog/templates/blog/post_form.html -->
+
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h1>Create a New Post</h1>
+    <form method="post" class="mt-4">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Publish</button>
+    </form>
+  </div>
+{% endblock %}

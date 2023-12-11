@@ -1,0 +1,29 @@
+<!-- blog/templates/blog/post_detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h1>{{ post.title }}</h1>
+    <p class="text-muted">{{ post.pub_date }}</p>
+  {% if post.image %}
+      <p>{{ post.image.url }}</p>
+      <img src="{{ post.image.url }}" alt="{{ post.title }}">
+
+    {% endif %}
+    <p>{{ post.content }}</p>
+     <!-- Display Comments -->
+
+    <!-- Comment Form -->
+    <!-- Comments Section -->
+    <h2 class="mt-4">Comments</h2>
+    {% for comment in post.comment_set.all %}
+      <div class="card mb-2">
+        <div class="card-body">
+          <p class="card-text"><strong>{{ comment.author }}</strong> says: {{ comment.text }}</p>
+          <p class="card-text text-muted">{{ comment.pub_date }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
